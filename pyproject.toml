@@ -1,0 +1,10 @@
+[project]
+name = "follow-bot"
+version = "1.0.0"
+description = "Sugestões diárias de perfis para seguir e unfollow com aprovação, rodando no GitHub Actions"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src", "tests"]

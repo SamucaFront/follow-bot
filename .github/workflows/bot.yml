@@ -1,0 +1,137 @@
+name: follow-bot
+
+on:
+  schedule:
+    # A cada hora, no minuto 17 (o minuto 0 é o mais congestionado do GitHub Actions).
+    - cron: "17 * * * *"
+  workflow_dispatch:
+    inputs:
+      task:
+        description: "O que executar"
+        type: choice
+        options: [all, sync, suggest, review]
+        default: all
+      dry_run:
+        description: "Simulação: não deixa de seguir ninguém de verdade"
+        type: boolean
+        default: false
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: write # salvar o histórico no branch bot-data
+  issues: write   # abrir as issues de sugestões e de revisão
+
+# Nunca duas execuções ao mesmo tempo (evita conflito no histórico).
+concurrency:
+  group: follow-bot
+  cancel-in-progress: false
+
+jobs:
+  run:
+    # Comentários só disparam o bot quando são /aprovar ou /cancelar escritos pelo dono do repositório.
+    if: >-
+      github.event_name != 'issue_comment' ||
+      (github.event.comment.user.login == github.repository_owner &&
+       (startsWith(github.event.comment.body, '/aprovar') ||
+        startsWith(github.event.comment.body, '/approve') ||
+        startsWith(github.event.comment.body, '/cancelar') ||
+        startsWith(github.event.comment.body, '/cancel')))
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      DATA_DIR: .bot-data
+      LOG_FILE: logs/bot.log
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Instalar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Instalar dependências
+        run: pip install -r requirements.txt
+
+      - name: Carregar histórico (branch bot-data)
+        id: load
+        run: |
+          if git ls-remote --exit-code --heads origin bot-data > /dev/null; then
+            git fetch --depth=1 origin bot-data
+            git worktree add "$DATA_DIR" FETCH_HEAD
+            echo "Histórico carregado do branch bot-data."
+          else
+            git worktree add --detach "$DATA_DIR"
+            git -C "$DATA_DIR" checkout --orphan bot-data-local
+            git -C "$DATA_DIR" rm -rfq .
+            echo "Primeira execução: o branch bot-data será criado."
+          fi
+
+      - name: Executar o bot
+        id: bot
+        env:
+          GH_USER_TOKEN: ${{ secrets.GH_USER_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }}
+          BOT_ENABLED: ${{ vars.BOT_ENABLED }}
+          DRY_RUN: ${{ inputs.dry_run && 'true' || vars.DRY_RUN }}
+          BOT_TASK: ${{ inputs.task || 'all' }}
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          if [ -z "$GH_USER_TOKEN" ]; then
+            echo "::error::Secret GH_USER_TOKEN não configurado. Veja o README."
+            exit 1
+          fi
+          if [ "$EVENT_NAME" = "schedule" ]; then
+            python src/main.py
+          else
+            python src/main.py --manual
+          fi
+
+      - name: Salvar histórico
+        if: always() && steps.load.outcome == 'success'
+        working-directory: ${{ env.DATA_DIR }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Nenhuma mudança no histórico."
+            exit 0
+          fi
+          git commit -q -m "chore(data): estado em $(date -u +%Y-%m-%dT%H:%MZ)"
+          for attempt in 1 2 3; do
+            if git push -q origin HEAD:bot-data; then exit 0; fi
+            echo "Push falhou (tentativa $attempt); atualizando e tentando de novo."
+            sleep $((attempt * 5))
+            git pull -q --rebase origin bot-data || true
+          done
+          echo "::error::Não consegui salvar o histórico no branch bot-data."
+          exit 1
+
+      - name: Guardar logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: logs-${{ github.run_id }}
+          path: logs/
+          retention-days: 14
+          if-no-files-found: ignore
+
+      - name: Avisar falha numa issue
+        if: failure() && github.event_name == 'schedule'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          gh label create bot-falha --color b60205 --description "O follow-bot falhou" --force
+          existing=$(gh issue list --label bot-falha --state open --json number --jq '.[0].number')
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --body "Falhou de novo: $RUN_URL"
+          else
+            gh issue create --label bot-falha --title "follow-bot falhou" \
+              --body "A execução agendada falhou. Logs: $RUN_URL
+
+          Feche esta issue depois de resolver. Se o erro for de token, gere um novo e atualize o secret GH_USER_TOKEN."
+          fi

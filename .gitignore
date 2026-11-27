@@ -1,0 +1,18 @@
+# Segredos
+.env
+*.env
+!.env.example
+
+# Dados e logs locais (no Actions o histórico vive no branch bot-data)
+data/*
+!data/.gitkeep
+.bot-data/
+logs/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+*.egg-info/

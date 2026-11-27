@@ -1,0 +1,34 @@
+# Configuração do follow-bot. Edite e faça commit; vale a partir da próxima execução.
+# Duas variáveis do repositório (Settings > Secrets and variables > Actions > Variables)
+# sobrescrevem este arquivo: BOT_ENABLED e DRY_RUN.
+
+[bot]
+enabled = true     # false desliga o bot sem precisar mexer no workflow
+dry_run = false    # true = simulação: abre as issues, mas não deixa de seguir ninguém
+
+[suggestions]
+per_day = 20                 # perfis sugeridos por dia (máximo 30)
+hour_utc = 12                # hora (UTC) em que sai a lista do dia; 12 UTC = 9h em Brasília
+languages = []               # ex.: ["TypeScript", "JavaScript", "Python"]; vazio = qualquer linguagem
+# Sem filtro de país: as buscas cobrem perfis do mundo inteiro.
+
+# Filtros de "engajado e que segue de volta"
+min_followers = 10
+max_followers = 5000
+min_following = 10
+min_ratio = 0.5              # seguindo / seguidores. Perto de 1 = costuma retribuir
+max_ratio = 3.0
+active_within_days = 14      # precisa ter atividade pública nos últimos N dias
+min_public_repos = 3
+candidates_to_inspect = 80   # quantos perfis analisar por dia (cada um custa 1 a 2 chamadas da API)
+
+[unfollow]
+wait_days = 7                # dias de espera antes de considerar que a pessoa não retribuiu
+max_per_review = 40          # máximo de perfis por issue de revisão
+include_preexisting = false  # true inclui quem você já seguia antes de instalar o bot
+keep = []                    # nunca sugerir unfollow destes, ex.: ["torvalds", "gaearon"]
+
+[limits]
+max_accounts_per_run = 20    # contas processadas por execução (máximo 20)
+max_operations_per_day = 20  # unfollows por dia (máximo 50)
+run_interval_hours = 1       # intervalo mínimo entre execuções agendadas (o cron roda a cada hora)
