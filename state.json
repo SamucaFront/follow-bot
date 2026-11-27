@@ -1,0 +1,122 @@
+{
+  "daily_ops": {
+    "count": 0,
+    "date": null
+  },
+  "followers": [
+    "Fabioaug",
+    "Matheussftw",
+    "kpopdev",
+    "mohamed-oshiba"
+  ],
+  "following": {
+    "AscendlyFi": {
+      "followed_at": "2026-11-27T12:15:01+00:00",
+      "source": "preexisting"
+    },
+    "Fabioaug": {
+      "followed_at": "2026-11-27T12:15:01+00:00",
+      "source": "preexisting"
+    },
+    "Matheussftw": {
+      "followed_at": "2026-11-27T12:15:01+00:00",
+      "source": "preexisting"
+    },
+    "cursoemvideo": {
+      "followed_at": "2026-11-27T12:15:01+00:00",
+      "source": "preexisting"
+    },
+    "danielcs-prof": {
+      "followed_at": "2026-11-27T12:15:01+00:00",
+      "source": "preexisting"
+    },
+    "kpopdev": {
+      "followed_at": "2026-11-27T12:15:01+00:00",
+      "source": "preexisting"
+    },
+    "mohamed-oshiba": {
+      "followed_at": "2026-11-27T12:15:01+00:00",
+      "source": "preexisting"
+    }
+  },
+  "history": [
+    {
+      "at": "2026-11-27T12:15:01+00:00",
+      "event": "initialized",
+      "followers": 4,
+      "following": 7
+    },
+    {
+      "at": "2026-11-27T12:15:01+00:00",
+      "count": 11,
+      "event": "suggestions_published",
+      "issue": 1
+    }
+  ],
+  "initialized": true,
+  "last_review_date": null,
+  "last_run_at": "2026-11-27T12:15:01+00:00",
+  "last_suggestion_date": "2026-11-27",
+  "last_suggestion_issue": 1,
+  "me": "SamucaFront",
+  "pending_review": null,
+  "suggested": {
+    "Alan-Baylis": {
+      "issue": 1,
+      "score": 75.35,
+      "suggested_at": "2026-11-27T12:15:01+00:00"
+    },
+    "Edouard144": {
+      "issue": 1,
+      "score": 90.0,
+      "suggested_at": "2026-11-27T12:15:01+00:00"
+    },
+    "FrMahon": {
+      "issue": 1,
+      "score": 78.02,
+      "suggested_at": "2026-11-27T12:15:01+00:00"
+    },
+    "JawherKl": {
+      "issue": 1,
+      "score": 57.37,
+      "suggested_at": "2026-11-27T12:15:01+00:00"
+    },
+    "aasimansari1": {
+      "issue": 1,
+      "score": 50.38,
+      "suggested_at": "2026-11-27T12:15:01+00:00"
+    },
+    "datasifaw": {
+      "issue": 1,
+      "score": 56.44,
+      "suggested_at": "2026-11-27T12:15:01+00:00"
+    },
+    "dovvnloading": {
+      "issue": 1,
+      "score": 83.62,
+      "suggested_at": "2026-11-27T12:15:01+00:00"
+    },
+    "hotcoding85": {
+      "issue": 1,
+      "score": 47.41,
+      "suggested_at": "2026-11-27T12:15:01+00:00"
+    },
+    "kidmam": {
+      "issue": 1,
+      "score": 57.05,
+      "suggested_at": "2026-11-27T12:15:01+00:00"
+    },
+    "lshariprasad": {
+      "issue": 1,
+      "score": 51.51,
+      "suggested_at": "2026-11-27T12:15:01+00:00"
+    },
+    "mohamedelmougy": {
+      "issue": 1,
+      "score": 93.44,
+      "suggested_at": "2026-11-27T12:15:01+00:00"
+    }
+  },
+  "unfollowed": {},
+  "version": 1
+}
