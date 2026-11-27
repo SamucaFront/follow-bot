@@ -10,9 +10,13 @@
     "mohamed-oshiba"
   ],
   "following": {
-    "AscendlyFi": {
-      "followed_at": "2026-11-27T12:15:01+00:00",
-      "source": "preexisting"
+    "AhmAbd": {
+      "followed_at": "2026-11-27T21:14:56+00:00",
+      "source": "manual"
+    },
+    "Edouard144": {
+      "followed_at": "2026-11-27T21:14:56+00:00",
+      "source": "suggestion"
     },
     "Fabioaug": {
       "followed_at": "2026-11-27T12:15:01+00:00",
@@ -22,13 +26,9 @@
       "followed_at": "2026-11-27T12:15:01+00:00",
       "source": "preexisting"
     },
-    "cursoemvideo": {
-      "followed_at": "2026-11-27T12:15:01+00:00",
-      "source": "preexisting"
-    },
-    "danielcs-prof": {
-      "followed_at": "2026-11-27T12:15:01+00:00",
-      "source": "preexisting"
+    "gabrieledm": {
+      "followed_at": "2026-11-27T21:14:56+00:00",
+      "source": "manual"
     },
     "kpopdev": {
       "followed_at": "2026-11-27T12:15:01+00:00",
@@ -51,11 +51,29 @@
       "count": 11,
       "event": "suggestions_published",
       "issue": 1
+    },
+    {
+      "at": "2026-11-27T21:14:56+00:00",
+      "event": "followed",
+      "login": "AhmAbd",
+      "source": "manual"
+    },
+    {
+      "at": "2026-11-27T21:14:56+00:00",
+      "event": "followed",
+      "login": "Edouard144",
+      "source": "suggestion"
+    },
+    {
+      "at": "2026-11-27T21:14:56+00:00",
+      "event": "followed",
+      "login": "gabrieledm",
+      "source": "manual"
     }
   ],
   "initialized": true,
-  "last_review_date": null,
-  "last_run_at": "2026-11-27T12:15:01+00:00",
+  "last_review_date": "2026-11-27",
+  "last_run_at": "2026-11-27T21:14:56+00:00",
   "last_suggestion_date": "2026-11-27",
   "last_suggestion_issue": 1,
   "me": "SamucaFront",
@@ -117,6 +135,19 @@
       "suggested_at": "2026-11-27T12:15:01+00:00"
     }
   },
-  "unfollowed": {},
+  "unfollowed": {
+    "AscendlyFi": {
+      "by": "manual",
+      "unfollowed_at": "2026-11-27T21:14:56+00:00"
+    },
+    "cursoemvideo": {
+      "by": "manual",
+      "unfollowed_at": "2026-11-27T21:14:56+00:00"
+    },
+    "danielcs-prof": {
+      "by": "manual",
+      "unfollowed_at": "2026-11-27T21:14:56+00:00"
+    }
+  },
   "version": 1
 }
