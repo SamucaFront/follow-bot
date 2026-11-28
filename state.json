@@ -69,13 +69,19 @@
       "event": "followed",
       "login": "gabrieledm",
       "source": "manual"
+    },
+    {
+      "at": "2026-11-28T12:58:20+00:00",
+      "count": 11,
+      "event": "suggestions_published",
+      "issue": 2
     }
   ],
   "initialized": true,
   "last_review_date": "2026-11-28",
-  "last_run_at": "2026-11-28T03:20:24+00:00",
-  "last_suggestion_date": "2026-11-27",
-  "last_suggestion_issue": 1,
+  "last_run_at": "2026-11-28T12:58:20+00:00",
+  "last_suggestion_date": "2026-11-28",
+  "last_suggestion_issue": 2,
   "me": "SamucaFront",
   "pending_review": null,
   "suggested": {
@@ -84,10 +90,20 @@
       "score": 75.35,
       "suggested_at": "2026-11-27T12:15:01+00:00"
     },
+    "AugmentedRealityCat": {
+      "issue": 2,
+      "score": 71.12,
+      "suggested_at": "2026-11-28T12:58:20+00:00"
+    },
     "Edouard144": {
       "issue": 1,
       "score": 90.0,
       "suggested_at": "2026-11-27T12:15:01+00:00"
+    },
+    "FlutterSmith": {
+      "issue": 2,
+      "score": 40.53,
+      "suggested_at": "2026-11-28T12:58:20+00:00"
     },
     "FrMahon": {
       "issue": 1,
@@ -99,10 +115,20 @@
       "score": 57.37,
       "suggested_at": "2026-11-27T12:15:01+00:00"
     },
+    "KipletingEdwin": {
+      "issue": 2,
+      "score": 64.14,
+      "suggested_at": "2026-11-28T12:58:20+00:00"
+    },
     "aasimansari1": {
       "issue": 1,
       "score": 50.38,
       "suggested_at": "2026-11-27T12:15:01+00:00"
+    },
+    "aldrshan": {
+      "issue": 2,
+      "score": 49.36,
+      "suggested_at": "2026-11-28T12:58:20+00:00"
     },
     "datasifaw": {
       "issue": 1,
@@ -114,10 +140,25 @@
       "score": 83.62,
       "suggested_at": "2026-11-27T12:15:01+00:00"
     },
+    "dr-data": {
+      "issue": 2,
+      "score": 62.55,
+      "suggested_at": "2026-11-28T12:58:20+00:00"
+    },
+    "entn-at": {
+      "issue": 2,
+      "score": 44.95,
+      "suggested_at": "2026-11-28T12:58:20+00:00"
+    },
     "hotcoding85": {
       "issue": 1,
       "score": 47.41,
       "suggested_at": "2026-11-27T12:15:01+00:00"
+    },
+    "joaocarpim": {
+      "issue": 2,
+      "score": 87.52,
+      "suggested_at": "2026-11-28T12:58:20+00:00"
     },
     "kidmam": {
       "issue": 1,
@@ -129,10 +170,30 @@
       "score": 51.51,
       "suggested_at": "2026-11-27T12:15:01+00:00"
     },
+    "m-bwela": {
+      "issue": 2,
+      "score": 38.38,
+      "suggested_at": "2026-11-28T12:58:20+00:00"
+    },
     "mohamedelmougy": {
       "issue": 1,
       "score": 93.44,
       "suggested_at": "2026-11-27T12:15:01+00:00"
+    },
+    "rescenic": {
+      "issue": 2,
+      "score": 89.95,
+      "suggested_at": "2026-11-28T12:58:20+00:00"
+    },
+    "rogervaas": {
+      "issue": 2,
+      "score": 50.57,
+      "suggested_at": "2026-11-28T12:58:20+00:00"
+    },
+    "sajjad-salam": {
+      "issue": 2,
+      "score": 70.28,
+      "suggested_at": "2026-11-28T12:58:20+00:00"
     }
   },
   "unfollowed": {
